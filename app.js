@@ -22,7 +22,7 @@ function agregarAmigo() {
 }
 
 // Escuchar el evento Enter en el campo de texto
-document.getElementById("amigo").addEventListener("keydown", function (event) {
+document.getElementById("amigo").addEventListener("keydown", function(event) {
     if (event.key === "Enter") {
         agregarAmigo();  // Llamar a agregarAmigo cuando se presiona Enter
     }
