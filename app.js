@@ -15,6 +15,13 @@ function agregarAmigo() {
     entrada.value = ""; // Limpiar el campo después de agregar
 }
 
+// Escuchar el evento Enter en el campo de texto
+document.getElementById("amigo").addEventListener("keydown", function(event) {
+    if (event.key === "Enter") {
+        agregarAmigo();  // Llamar a agregarAmigo cuando se presiona Enter
+    }
+});
+
 function actualizarLista() {
     let lista = document.getElementById("listaAmigos");
     lista.innerHTML = ""; // Limpiar la lista antes de actualizar
@@ -25,3 +32,28 @@ function actualizarLista() {
         lista.appendChild(nuevoElemento);
     });
 }
+
+function sortearAmigo() {
+    // Verificar si hay amigos disponibles para sortear
+    if (amigos.length === 0) {
+        alert("No hay amigos disponibles para sortear.");
+        return;
+    }
+
+    // Sortear un amigo aleatorio
+    let amigoSorteado = Math.floor(Math.random() * amigos.length);
+    let nombreSorteado = amigos[amigoSorteado];
+    console.log(nombreSorteado);
+
+    // Mostrar el nombre sorteado en el <h1>
+    document.getElementById("resultadoSorteo").textContent = `El amigo sorteado es: ${nombreSorteado}`;
+
+    // Eliminar el amigo sorteado del arreglo
+    amigos.splice(amigoSorteado, 1);
+
+    // Actualizar la lista de amigos en la interfaz (si deseas)
+    actualizarLista();
+}
+
+
+
