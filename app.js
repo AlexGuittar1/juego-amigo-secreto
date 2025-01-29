@@ -9,14 +9,20 @@ function agregarAmigo() {
         return;
     }
 
-    amigos.push(nombre);
-    actualizarLista();
+    // Verificar si el nombre ya está en la lista
+    if (nombre && !amigos.includes(nombre)) {
+        amigos.push(nombre);
+        actualizarLista();
+    } else {
+        alert("Este amigo ya está en la lista o el campo está vacío.");
+    }
+
 
     entrada.value = ""; // Limpiar el campo después de agregar
 }
 
 // Escuchar el evento Enter en el campo de texto
-document.getElementById("amigo").addEventListener("keydown", function(event) {
+document.getElementById("amigo").addEventListener("keydown", function (event) {
     if (event.key === "Enter") {
         agregarAmigo();  // Llamar a agregarAmigo cuando se presiona Enter
     }
